@@ -1,7 +1,8 @@
 from django.urls import path
+from list.views import PageListView
 
 from . import views
 
 urlpatterns = [
-    path('', views.index, name='index'),
+    path('', PageListView.as_view(), name='listing-page'),
 ]
