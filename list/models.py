@@ -1,10 +1,13 @@
 from django.db import models
+from django.utils import timezone
 
-class Listings(models.Model):
+class Listing(models.Model):
     title = models.CharField(max_length=120)
-    description = models.TextField(blank=True, null=True)
-    # price = models.DecimalField(decimal_places=2, max_digits=10000)
+    created = models.DateTimeField(auto_now_add=True,
+                                   help_text="The date and time this page was created. Automatically generated when the model saves.")
     summary = models.TextField()
+    created = models.DateTimeField(auto_now_add=True,
+                                   help_text="The date and time this page was created. Automatically generated when the model saves.")
     # author = models.ForeignKey(User, on_delete=models.PROTECT)
     # slug = models.CharField(max_length=settings.POST_TITLE_MAX_LENGTH, blank=True, editable=False)
 
