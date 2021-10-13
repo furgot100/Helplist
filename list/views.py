@@ -1,4 +1,5 @@
-from django.http import HttpResponse
+from typing import List
+from django.http import HttpResponse, Http404
 from django.views.generic.list import ListView
 from django.shortcuts import render
 from list.models import Listing
@@ -6,6 +7,7 @@ from django.views.generic.edit import CreateView
 from list.forms import ListCreateForm
 from django.urls import reverse_lazy
 from django.http import HttpResponseRedirect
+from django.views.generic.detail import DetailView
 
 
 class HelperListView(ListView):
@@ -31,3 +33,14 @@ class HelperCreateView(CreateView):
             item.save()
             return HttpResponseRedirect(reverse_lazy('list:listing-page'))
         return render(request,'new.html', {'form': form})
+
+# class HelperDetailView(DetailView):
+#     """ Renders a specific page based on it's slug."""
+#     model = Listing
+
+#     def get(self, request, slug):
+#         try:
+#             list = Listing.objects.get(slug=slug)
+#         except Listing.DoesNotExist:
+#             raise Http404("Product doesn't exist")
+#         return render(request, 'detail.html', {'list' : list})

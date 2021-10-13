@@ -26,4 +26,4 @@ class Listing(models.Model):
     def get_absolute_url(self):
         """ Returns a fully-qualified path for a page"""
         path_components = {'slug': self.slug}
-        return reverse('store-item', kwargs=path_components)    
+        return reverse('helper-detail', kwargs=path_components)    
