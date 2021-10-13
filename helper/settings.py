@@ -27,7 +27,7 @@ SECRET_KEY = str(os.getenv('SECRET_KEY'))
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['localhost', 'helperlist.herokuapp.com']
+ALLOWED_HOSTS = []
 
 
 # Application definition
@@ -119,7 +119,7 @@ USE_L10N = True
 
 USE_TZ = True
 
-
+POST_TITLE_MAX_LENGTH = 600
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/2.2/howto/static-files/

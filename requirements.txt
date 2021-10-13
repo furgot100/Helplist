@@ -1,4 +1,3 @@
 django==2.2.7
 gunicorn
 dotenv
-setuptools==0.7.3

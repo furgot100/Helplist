@@ -1,8 +1,10 @@
 from django.urls import path
-from list.views import PageListView
+from list.views import HelperListView, HelperCreateView
 
-from . import views
+app_name = 'list'
 
 urlpatterns = [
-    path('', PageListView.as_view(), name='listing-page'),
+    path('', HelperListView.as_view(), name='listing-page'),
+
+    path('new/', HelperCreateView.as_view(), name='helper-new-page'),
 ]
