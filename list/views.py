@@ -29,10 +29,9 @@ class HelperCreateView(CreateView):
     def post(self, request, *args, **kwargs):
         form = ListCreateForm(request.POST)
         if form.is_valid():
-            item = form.save()
-            item.save()
-            return HttpResponseRedirect(reverse_lazy('list:listing-page'))
-        return render(request,'new.html', {'form': form})
+            form = form.save()
+            return HttpResponseRedirect(reverse_lazy('forms:detail', args=[form.id]))
+        return render(request, 'new.html', {'form': form})
 
 # class HelperDetailView(DetailView):
 #     """ Renders a specific page based on it's slug."""
