@@ -21,6 +21,20 @@ class HelperListView(ListView):
           'lists': lists
         })
 
+
+
+class HelperDetailView(DetailView):
+    """ Renders a specific page based on it's slug."""
+    model = Listing
+
+    def get(self, request, slug):
+        """ Returns a specific wiki page by slug. """
+        list = self.get_queryset().get(slug__iexact=slug)
+        return render(request, 'detail.html', {
+          'list': list
+        })
+
+
 class HelperCreateView(CreateView):
     def get(self, request, *args, **kwargs):
         product = {'form': ListCreateForm()}
@@ -33,13 +47,3 @@ class HelperCreateView(CreateView):
             return HttpResponseRedirect(reverse_lazy('forms:detail', args=[form.id]))
         return render(request, 'new.html', {'form': form})
 
-class HelperDetailView(DetailView):
-    """ Renders a specific page based on it's slug."""
-    model = Listing
-
-    def get(self, request, slug):
-        """ Returns a specific wiki page by slug. """
-        page = self.get_queryset().get(slug__iexact=slug)
-        return render(request, 'detail.html', {
-          'list': list
-        })
