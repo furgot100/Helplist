@@ -4,7 +4,7 @@ from .models import Listing
 
 class ListingAdmin(admin.ModelAdmin):
     """ Show helpful fields on the changelist page. """
-    list_display = ('title', 'slug', 'author', 'created', 'modified')
+    list_display = ('title', 'slug', 'author', 'created')
 
 admin.site.register(Listing)
 

@@ -8,6 +8,7 @@ from list.forms import ListCreateForm
 from django.urls import reverse_lazy
 from django.http import HttpResponseRedirect
 from django.views.generic.detail import DetailView
+from django.utils import timezone
 
 
 class HelperListView(ListView):
@@ -37,13 +38,13 @@ class HelperDetailView(DetailView):
 
 class HelperCreateView(CreateView):
     def get(self, request, *args, **kwargs):
-        product = {'form': ListCreateForm()}
-        return render(request, 'new.html', product)
+        context = {'form': ListCreateForm()}
+        return render(request, 'new.html', context)
 
     def post(self, request, *args, **kwargs):
         form = ListCreateForm(request.POST)
         if form.is_valid():
             form = form.save()
-            return HttpResponseRedirect(reverse_lazy('forms:detail', args=[form.id]))
+            return HttpResponseRedirect(reverse_lazy('listing-page'))
         return render(request, 'new.html', {'form': form})
 

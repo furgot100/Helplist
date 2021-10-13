@@ -7,6 +7,7 @@ from django.contrib.auth.models import User
 
 class Listing(models.Model):
     title = models.CharField(max_length=120)
+    email = models.EmailField(max_length=254)
     created = models.DateTimeField(auto_now_add=True,
                                    help_text="The date and time this page was created. Automatically generated when the model saves.")
     summary = models.TextField()
