@@ -4,7 +4,7 @@
       <p class="card-text text-dark">
         {{ list.summary|truncatewords_html:30 }}
         <hr>
-        <div class="text-right"><a href="" title="Read More">Read More</a></div>
+        <div class="text-right"><a href="{% url 'helper-detail' list.slug %}" title="Read More">Read More</a></div>
     </div>
     <div class="card-footer">
       <small class="text-muted">Last updated {{ list.created|date:"SHORT_DATETIME_FORMAT" }}</small>

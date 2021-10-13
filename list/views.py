@@ -33,13 +33,13 @@ class HelperCreateView(CreateView):
             return HttpResponseRedirect(reverse_lazy('forms:detail', args=[form.id]))
         return render(request, 'new.html', {'form': form})
 
-# class HelperDetailView(DetailView):
-#     """ Renders a specific page based on it's slug."""
-#     model = Listing
+class HelperDetailView(DetailView):
+    """ Renders a specific page based on it's slug."""
+    model = Listing
 
-#     def get(self, request, slug):
-#         try:
-#             list = Listing.objects.get(slug=slug)
-#         except Listing.DoesNotExist:
-#             raise Http404("Product doesn't exist")
-#         return render(request, 'detail.html', {'list' : list})
+    def get(self, request, slug):
+        """ Returns a specific wiki page by slug. """
+        page = self.get_queryset().get(slug__iexact=slug)
+        return render(request, 'detail.html', {
+          'list': list
+        })
