@@ -4,10 +4,11 @@ from django.urls import reverse
 from django.utils.text import slugify
 from django.utils import timezone
 from django.contrib.auth.models import User
+from django import forms
 
 class Listing(models.Model):
     title = models.CharField(max_length=120)
-    email = models.EmailField(max_length=254)
+    email = models.EmailField(max_length=254, blank=True)
     created = models.DateTimeField(auto_now_add=True,
                                    help_text="The date and time this page was created. Automatically generated when the model saves.")
     summary = models.TextField()
