@@ -4,6 +4,11 @@
   <div class="row">
     <div class="col m-4">
       <h3>{{ list.title }} <small class="text-muted">Last updated {{ list.created|date:"SHORT_DATETIME_FORMAT" }}</small></h3>
+      {% if list.email|length > 0 %}
+        <p>Email: {{ list.email }}</p>
+      {% else %}
+        <p>Email: None</p>
+      {% endif %}
       <hr>
       <p>{{ list.summary|linebreaksbr }}</p>
       <hr>
