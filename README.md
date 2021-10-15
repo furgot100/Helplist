@@ -26,6 +26,9 @@ When that is all done, simply run the following command to start the app:
 $ python3 manage.py runserver
 ```
 
+## Known Issue
+1. Admin panel is not working properly
+2. 
 
 
 
